@@ -1,0 +1,25 @@
+<div class="hide@md" data-controller="dialog">
+  <button class="btn btn--icon" data-action="dialog#showModal">
+    <%= image_tag "menu.svg", size: 20, aria: { hidden: true } %>
+    <span class="sr-only">Open menu</span>
+  </button>
+
+  <dialog class="sheet sheet--left" data-dialog-target="menu" data-action="click->dialog#closeOnClickOutside">
+    <button class="btn btn--plain sheet__close" data-action="click->dialog#close">
+      <%= image_tag "x.svg", size: 16, aria: { hidden: true } %>
+      <span class="sr-only">Close</span>
+    </button>
+    <div class="sheet__content">
+        <div class="command" style="max-inline-size: 450px" data-controller="command" data-command-active-class="command__list--filtering" data-command-selected-class="selected">
+          <label class="command__input input input--actor flex items-center gap">
+            <%= image_tag "search.svg", size: 16, aria: { hidden: true } %>
+            <%= text_field_tag "search", nil, data: { command_target: "input", action: "input->command#filter focus->command#start blur->command#stop" }, autocomplete: "off", placeholder: "Filter..." %>
+          </label>
+          <div class="command__list" data-command-target="list" role="listbox" aria-label="Commands">
+            <%= render "/shared/side_menu" %>
+            <div class="command__empty">Not results found.</div>
+          </div>
+        </div>
+    </div>
+  </dialog>
+</div>

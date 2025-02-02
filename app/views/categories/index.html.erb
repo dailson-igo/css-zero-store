@@ -1,0 +1,25 @@
+<div>
+  <h1 class="font-bold text-4xl">Categories</h1>
+</div>
+
+<div>
+  <table class="table">
+    <caption>
+      A list of categories.
+    </caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <th><%= category.id %></th>
+          <td><%= category.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

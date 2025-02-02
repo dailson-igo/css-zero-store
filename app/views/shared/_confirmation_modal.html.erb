@@ -1,0 +1,47 @@
+<%= turbo_frame_tag "modal" do %>
+
+  <dialog class="dialog" 
+    style="--dialog-size: 430px;"
+    data-dialog-target="menu"
+    data-action="click->modal#clickOutside",
+
+    id="confirmation-modal" 
+    aria-label="modal_label",    
+    aria-labelledby="modal_title"
+    data-controller="modal">
+
+    <button class="btn btn--plain dialog__close" data-action="click->modal#close">
+      <%= image_tag "x.svg", size: 16, aria: { hidden: true } %>
+      <span class="sr-only">Close</span>
+      <%= turbo_frame_tag :modal, data: {dialog_target: "frame"} %>
+    </button>
+
+    <div class="dialog__content">
+      <div class="prose">
+        <h3 id="modal_title">
+          <%= title %>
+        </h3>
+
+        <div class="modal-body">
+          <p><%= message %></p>
+        </div>
+
+        <div data-action="turbo:submit-end->modal#submitEnd">
+          <%= form_with(url: url, method: :delete, class: "flex flex-col gap") do |form| %>
+            <div class="flex items-center justify-end gap mbs-4">
+              <%= button_tag 'Cancel', class: "btn", type: 'button', data: { action: 'click->modal#close' } %>
+              <%= form.button "Delete", class: "btn btn--primary" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </dialog>
+
+  
+<% end %>

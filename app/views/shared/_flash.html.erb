@@ -1,0 +1,28 @@
+<div id="flash">
+  <% flash.each do |type, message| %>
+
+        <div popover class="flash flex flex-col" data-controller="element-removal" 
+          data-action="animationend->element-removal#remove" role="alert">
+
+          <% if type == 'notice' %>
+            <div class="alert flex items-start gap">
+              <%= icon "terminal", size: 16, aria: { hidden: true } %>
+              <div class="flex flex-col">
+                <h5 class="font-medium leading-none mbe-1">Heads up!</h5>
+                <p><%= message %></p>
+              </div>
+            </div>
+          <% else %>
+            <div class="alert alert--negative flex items-start gap">
+              <%= icon "circle-alert", size: 16, aria: { hidden: true } %>
+              <div class="flex flex-col">
+                <h5 class="font-medium leading-none mbe-1">Error</h5>
+                <p><%= message %></p>
+              </div>
+            </div>
+          <% end %>
+          
+        </div>
+      </div>
+  <% end %>
+</div>

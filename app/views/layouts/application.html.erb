@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "CSS Zero" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag "css-zero/reset", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "css-zero/variables", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "css-zero/utilities", "data-turbo-track": "reload" %>
+    
+    <%= javascript_importmap_tags %>
+  </head>
+
+    <div class="sidebar-layout">    
+      
+      <header id="header">
+        <%= render "/shared/mobile_menu" %>
+        <div class="container">
+          <h1 class="font-bold text-2xl">CSS Zero</h1>
+        </div>
+      </header>
+
+      <aside id="sidebar">
+        <div class="command" style="max-inline-size: 450px" data-controller="command" data-command-active-class="command__list--filtering" data-command-selected-class="selected">
+          <label class="command__input input input--actor flex items-center gap">
+            <%= icon "search", size: 16, aria: { hidden: true } %>
+            <%= text_field_tag "search", nil, data: { command_target: "input", action: "input->command#filter focus->command#start blur->command#stop" }, autocomplete: "off", placeholder: "Filter..." %>
+          </label>
+          <div class="command__list" data-command-target="list" role="listbox" aria-label="Commands">
+            <%= render "/shared/side_menu" %>
+            <div class="command__empty">Not results found.</div>
+          </div>
+        </div>
+      </aside>
+
+      <main id="main">
+        <%= render "shared/flash" %>
+        <%= yield %>
+        <%#= turbo_frame_tag "modal" %>
+      </main>
+
+
+
+    </div>
+  </body>
+</html>

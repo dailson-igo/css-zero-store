@@ -1,0 +1,80 @@
+<%# <meta name="turbo-visit-control" content="reload"> %>
+
+<%= turbo_frame_tag "items" do %>
+
+  <div>
+    <h1 class="font-bold text-4xl">Customers</h1>
+  </div>
+
+  <div>
+    <table class="table">
+      <caption>
+        A list of customers.
+      </caption>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>E-mail</th>
+          <th>Phone</th>
+          <th>Country</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <th><%= customer.id %></th>
+            <td><%= customer.full_name %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.phone %></td>
+            <td><%= customer.country %></td>
+            <td><%= customer.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+            <td>
+              <div id="customers">
+                
+                <%# Show %>
+                <%= link_to customer_path(customer), title: "Show", class: "btn command__item", data: { value: "customer" }, tabindex: "-1", role: "option" do %>
+                  <%= icon "eye", size: 14, aria: {hidden: false, label: "Aria2"} %>
+                <% end %>      
+
+                <%# Edit %>
+                <%= link_to edit_customer_path(customer),
+                  title: "Edit", 
+                  class: "btn command__item", 
+                  data: { value: "customer" }, 
+                  tabindex: "-1", role: "option" do %>
+                  <%= icon "pencil", size: 14 %>
+                <% end %>            
+
+                <%# Destroy: with turbo modal_controller %>
+                <%= link_to modals_confirm_deletion_path(record_type: customer.class.name, id: customer.id),
+                  title: "Delete with modal", class: "btn command__item",
+                  data: { turbo_frame: "modal", }, tabindex: "-1", role: "option" do %>
+                  <%= icon "trash-2", size: 14 %>
+                <% end %>  
+                <%= turbo_frame_tag "modal"%>
+
+                  <%# Destroy: with native browser support %>
+                  <%#= link_to customer_path(customer), title: "Delete", class: "btn command__item", 
+                      data: { 
+                        value: "customer",
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure you want to delete this customer?\n#{customer.full_name}"
+                      }, 
+                      tabindex: "-1", role: "option" do %>
+                    <%#= icon "trash", size: 14 %>
+                  <%# end %>
+
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+<% end %>
+
+<%= render partial: 'shared/pagy_pagination', locals: { pagy: @pagy } %>

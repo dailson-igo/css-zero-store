@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "modal" do %>
+  <dialog class="dialog" data-dialog-target="menu" role="alertdialog" aria-labelledby="dialog_label" aria-describedby="dialog_desc">
+    <div class="dialog__content">
+      <h1 class="text-lg font-semibold leading-none" id="dialog_label">Are you absolutely sure?</h1>
+      <p class="text-sm text-subtle mbs-2" id="dialog_desc">
+        This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+      </p>
+      <div class="flex items-center justify-end gap mbs-4">
+        <button class="btn" data-action="click->dialog#close">Cancel</button>
+        <button class="btn btn--primary">Continue</button>
+
+        <%= button_to "Continue", polymorphic_path(record), class: "btn btn--primary",
+          title: "Delete",
+          data: { 
+            turbo_method: :delete,
+            value: "customer",
+            controller: "dialog",
+            action: "dialog#showModal", 
+          } %>
+          
+      </div>
+    </div>
+  </dialog>
+<% end %>

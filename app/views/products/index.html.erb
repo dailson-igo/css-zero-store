@@ -1,0 +1,33 @@
+<div>
+  <h1 class="font-bold text-4xl">Products</h1>
+</div>
+
+<div>
+  <table class="table">
+    <caption>
+      A list of customers.
+    </caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <th><%= product.id %></th>
+          <td><%= product.name %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.stock %></td>
+          <td><%= product.created_at.strftime("%d/%m/%Y %H:%M")  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

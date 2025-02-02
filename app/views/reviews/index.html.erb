@@ -1,0 +1,33 @@
+<div>
+  <h1 class="font-bold text-4xl">Reviews#index</h1>
+</div>
+
+<div>
+  <table class="table">
+    <caption>
+      A list of reviews.
+    </caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Rating</th>
+        <th>Comment</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <th><%= review.id %></th>
+          <td><%= review.customer.full_name %></td>
+          <td><%= review.product.name %></td>          
+          <td><%= review.rating %></td>
+          <td><%= review.comment %></td>
+          <td><%= review.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

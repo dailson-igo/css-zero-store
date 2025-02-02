@@ -1,0 +1,38 @@
+<div class="command__group" role="group" aria-labelledby="store">
+  <span class="command__group-header" id="store">Store</span>
+
+  <%= link_to customers_path, class: "btn command__item", data: { value: "customer" }, tabindex: "-1", role: "option" do %>
+    <%= icon "user", size: 14, aria: { hidden: true } %>
+    <span>Customer</span>
+  <% end %>
+
+  <%= link_to categories_path, class: "btn command__item", data: { value: "category" }, tabindex: "-1", role: "option" do %>
+    <%= icon "library", size: 14, aria: { hidden: true } %>
+    <span>Category</span>
+  <% end %>
+
+  <%= link_to products_path, class: "btn command__item", data: { value: "product" }, tabindex: "-1", role: "option" do %>
+    <%= icon "package", size: 14, aria: { hidden: true } %>
+    <span>Product</span>
+  <% end %>  
+
+  <%= link_to orders_path, class: "btn command__item", data: { value: "order" }, tabindex: "-1", role: "option" do %>
+    <%= icon "shopping-bag", size: 14, aria: { hidden: true } %>
+    <span>Order</span>
+  <% end %>
+
+  <%= link_to reviews_path, class: "btn command__item", data: { value: "review" }, tabindex: "-1", role: "option" do %>
+    <%= icon "smile", size: 14, aria: { hidden: true } %>
+    <span>Review</span>
+  <% end %>  
+</div>
+
+<div class="command__group" role="group" aria-labelledby="settings">
+  <span class="command__group-header" id="settings">Settings</span>
+
+  <%= link_to "", class: "btn command__item", data: { value: "settings" }, aria: { disabled: true }, role: "option" do %>
+    <%= icon "settings", size: 14, aria: { hidden: true } %>
+    <span>Settings</span>
+    <span class="command__item-key">⌘P</span>
+  <% end %>
+</div>
