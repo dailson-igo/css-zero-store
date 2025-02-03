@@ -36,7 +36,7 @@
               <div id="customers">
                 
                 <%# Show %>
-                <%= link_to customer_path(customer), title: "Show", class: "btn command__item", data: { value: "customer" }, tabindex: "-1", role: "option" do %>
+                <%= link_to customer_path(customer), title: "Show", class: "btn command__item", data: { value: "customer", turbo: false }, tabindex: "-1", role: "option" do %>
                   <%= icon "eye", size: 14, aria: {hidden: false, label: "Aria2"} %>
                 <% end %>      
 
@@ -44,7 +44,7 @@
                 <%= link_to edit_customer_path(customer),
                   title: "Edit", 
                   class: "btn command__item", 
-                  data: { value: "customer" }, 
+                  data: { value: "customer", turbo: false }, 
                   tabindex: "-1", role: "option" do %>
                   <%= icon "pencil", size: 14 %>
                 <% end %>            
@@ -52,7 +52,7 @@
                 <%# Destroy: with turbo modal_controller %>
                 <%= link_to modals_confirm_deletion_path(record_type: customer.class.name, id: customer.id),
                   title: "Delete with modal", class: "btn command__item",
-                  data: { turbo_frame: "modal", }, tabindex: "-1", role: "option" do %>
+                  data: { turbo_frame: "modal" }, tabindex: "-1", role: "option" do %>
                   <%= icon "trash-2", size: 14 %>
                 <% end %>  
                 <%= turbo_frame_tag "modal"%>
