@@ -1,6 +1,6 @@
 <nav class="flex items-center gap" style="--column-gap: .25rem; --btn-padding: .375rem .75rem" aria-label="Pagination">
 
-<%= form_with url: request.path, method: :get, local: true, data: { turbo_frame: "items" } do |form| %>
+<%= form_with url: request.path, method: :get, local: true, data: { turbo_frame: "index_items" } do |form| %>
   <div class="field">
     <%#= form.label :items, "Items:", class: "text-sm leading-none" %>
     <%= form.select :items, options_for_select([10, 20, 50, 100], params[:items].presence || 10), {}, { class: "btn", onchange: "this.form.submit();" } %>

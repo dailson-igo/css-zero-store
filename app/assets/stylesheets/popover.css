@@ -25,3 +25,107 @@
     }
   }
 }
+
+.popover--notice {
+  position: fixed;
+  top: var(--size-5);
+  right: var(--size-5);
+  padding: var(--size-4);
+  /* background-color: rgb(from var(--color-positive) r g b / .75); */
+  background-color: rgb(from var(--color-bg) r g b / .75);
+  border-color: var(--alert-border-color, var(--color-border));
+  border-radius: var(--rounded-lg);
+  border-width: var(--border);
+  color: var(--color-text);
+  
+
+  /* Sombra mais acentuada que a "var(--shadow-xs)" */
+  /* box-shadow: var(--shadow-xs); */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  max-width: 400px; /* Limita a largura em telas grandes */
+  z-index: 1000;
+
+  --alert-border-color: var(--color-positive);
+  --alert-color: var(--color-positive);
+  --alert-icon-color: var(--color-filter-positive);
+
+  /* Animação que controla fade-in, tempo de exibição e fade-out */
+  animation: popover-fade 5s forwards;
+
+  img {
+    filter: var(--alert-icon-color, var(--color-filter-text));
+  }
+}
+
+/* Keyframes para a animação */
+@keyframes popover-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.popover--alert {
+  position: fixed;
+  top: var(--size-5);
+  right: var(--size-5);
+  padding: var(--size-4);
+  /* background-color: rgb(from var(--color-negative) r g b / .50); */
+  background-color: rgb(from var(--color-bg) r g b / .75);
+  border-color: var(--alert-border-color, var(--color-border));
+  border-radius: var(--rounded-lg);
+  border-width: var(--border);
+  color: var(--alert-color, var(--color-text));
+  
+
+  /* Sombra mais acentuada que a "var(--shadow-xs)" */
+  /* box-shadow: var(--shadow-xs); */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  max-width: 400px; /* Limita a largura em telas grandes */
+  z-index: 1000;
+
+  --alert-border-color: var(--color-negative);
+  --alert-color: var(--color-negative);
+  --alert-icon-color: var(--color-filter-negative);
+
+  /* Animação que controla fade-in, tempo de exibição e fade-out */
+  animation: popover-fade 5s forwards;
+
+  img {
+    filter: var(--alert-icon-color, var(--color-filter-text));
+  }
+}
+
+/* Keyframes para a animação */
+@keyframes popover-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
