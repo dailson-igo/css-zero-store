@@ -5,11 +5,12 @@
       </div>
 
       <div class="flex gap">
+        <%= link_to "New", new_customer_path(@customer), class: "btn" %>
+
         <%= button_tag class: "btn", aria: { disabled: true } do %>
           <%= icon "arrow-down", size: 16, aria: { hidden: true } %>
           <span>Actions</span>
-        <% end %>
-        <%= link_to "New", new_customer_path(@customer), class: "btn" %>
+        <% end %>        
       </div>
 </header>
 

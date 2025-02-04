@@ -24,8 +24,9 @@ class CustomersController < ApplicationController
 
         format.html { redirect_to @customer }
         format.turbo_stream {
-          render turbo_stream: turbo_stream.replace("flash",
-            partial: "shared/flash")
+          render turbo_stream: [
+            turbo_stream.replace("flash", partial: "shared/flash")
+          ]
         }
       else
         flash.now[:alert] = "Houve um erro ao salvar o cliente."
