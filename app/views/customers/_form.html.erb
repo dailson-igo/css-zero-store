@@ -1,17 +1,26 @@
+<% is_show_action = controller.action_name == 'show' %>
+
 <header class="justify-between" id="header">
       <div class="flex">
         <h1 class="font-bold text-3xl"><%= controller.action_name.capitalize %> Customer</h1>
       </div>
 
       <div class="flex gap">
-        <%= button_tag class: "btn", aria: { disabled: true } do %>
-          <%= icon "arrow-left", size: 16, aria: { hidden: true } %>
+        <%= button_tag class: "btn", data: { controller: "navigation", action: "navigation#back:prevent" } do %>
+          <%= icon "undo-2", size: 16, aria: { hidden: true } %>
           <span>Go back</span>
         <% end %>
 
-        <%= button_tag class: "btn", aria: { disabled: true } do %>
-          <%= icon "trash-2", size: 16, aria: { hidden: true } %>
-          <span>Delete</span>
+        <% if is_show_action %>
+          <div class="flex items-center">
+              <%= link_to modals_confirm_deletion_path(record_type: @customer.class.name, id: @customer.id),
+                title: "Delete with modal", class: "btn",
+                data: { turbo_frame: "modal" }, tabindex: "-1", role: "option" do %>
+                <%= icon "trash-2", size: 16, aria: { hidden: true } %>
+                <span>Delete</span>
+              <% end %>
+              <%= turbo_frame_tag "modal"%>              
+          </div>
         <% end %>
 
         <%= button_tag class: "btn", aria: { disabled: true } do %>
@@ -21,7 +30,6 @@
       </div>
 </header>
 
-<% is_show_action = controller.action_name == 'show' %>
 <%= form_with model: customer, class: "flex flex-col gap", data: { controller: "form" } do |form| %>
 
   <div class="flex flex-col gap-half">
