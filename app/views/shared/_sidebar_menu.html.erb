@@ -1,0 +1,111 @@
+<div class="sidebar-menu">
+  <%= link_to "#", class: "btn sidebar-menu__button" do %>
+    <div class="flex shrink-0 overflow-hidden rounded-lg bg-black">
+      <%= icon "hexagon", class: "colorize-white m-2", size: 16, alt: "ZI" %>
+    </div>
+    <div class="flex flex-col text-start leading-tight overflow-hidden">
+      <span class="overflow-ellipsis font-semibold">Zero Inc</span>
+      <span class="overflow-ellipsis text-xs">Enterprise</span>
+    </div>
+    <%= icon "chevrons-up-down", class: "mis-auto", size: 16, aria: { hidden: true } %>
+  <% end %>
+
+  <div class="sidebar-menu__content">
+
+    <div class="sidebar-menu__group">
+      <div class="sidebar-menu__group-label">Store</div>
+      <div class="sidebar-menu__items">
+        <%= link_to customers_path, class: "btn sidebar-menu__button" do %>
+          <%= icon "user", size: 16, aria: { hidden: true } %>
+          <span class="overflow-ellipsis">Customer</span>
+        <% end %>
+        <%= link_to categories_path, class: "btn sidebar-menu__button" do %>
+          <%= icon "library", size: 16, aria: { hidden: true } %>
+          <span class="overflow-ellipsis">Category</span>
+        <% end %>
+        <%= link_to "#", class: "btn sidebar-menu__button", aria: { disabled: true } do %>
+          <%= icon "package", size: 16, aria: { hidden: true } %>
+          <span class="overflow-ellipsis">Product</span>
+        <% end %>
+        <%= link_to "#", class: "btn sidebar-menu__button", aria: { disabled: true } do %>
+          <%= icon "shopping-bag", size: 16, aria: { hidden: true } %>
+          <span class="overflow-ellipsis">Order</span>
+        <% end %>
+        <%= link_to "#", class: "btn sidebar-menu__button", aria: { disabled: true } do %>
+          <%= icon "smile", size: 16, aria: { hidden: true } %>
+          <span class="overflow-ellipsis">Review</span>
+        <% end %>
+        
+      </div>
+    </div>
+
+    <div class="sidebar-menu__group">
+      <div class="sidebar-menu__group-label">Platform</div>
+      <div class="sidebar-menu__items">
+        <details>
+          <summary class="btn sidebar-menu__button">
+            <%= icon "square-terminal", size: 16, aria: { hidden: true } %>
+            <span class="overflow-ellipsis">Playground</span>
+          </summary>
+          <div class="sidebar-menu__sub">
+            <%= link_to "History", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Starred", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Settings", "#", class: "btn sidebar-menu__button" %>
+          </div>
+        </details>
+        <details>
+          <summary class="btn sidebar-menu__button">
+            <%= icon "bot", size: 16, aria: { hidden: true } %>
+            <span class="overflow-ellipsis">Models</span>
+          </summary>
+          <div class="sidebar-menu__sub">
+            <%= link_to "Genesis", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Explorer", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Quantum", "#", class: "btn sidebar-menu__button" %>
+          </div>
+        </details>
+        <details>
+          <summary class="btn sidebar-menu__button">
+            <%= icon "book-open", size: 16, aria: { hidden: true } %>
+            <span class="overflow-ellipsis">Documentation</span>
+            <%- icon "chevron-right", class: "mis-auto", size: 16, aria: { hidden: true } -%>
+          </summary>
+          <div class="sidebar-menu__sub">
+            <%= link_to "Documentation", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Get Started", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Tutorials", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Changelog", "#", class: "btn sidebar-menu__button" %>
+          </div>
+        </details>
+        <details>
+          <summary class="btn sidebar-menu__button">
+            <%= icon "settings-2", size: 16, aria: { hidden: true } %>
+            <span class="overflow-ellipsis">Settings</span>
+          </summary>
+          <div class="sidebar-menu__sub">
+            <%= link_to "General", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Teams", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Billing", "#", class: "btn sidebar-menu__button" %>
+            <%= link_to "Limits", "#", class: "btn sidebar-menu__button" %>
+          </div>
+        </details>
+        <%= tag.a class: "btn sidebar-menu__button", aria: { disabled: true } do %>
+          <%= icon "ellipsis", size: 16, aria: { hidden: true } %>
+          <span class="overflow-ellipsis">More</span>
+        <% end %>        
+      </div>
+    </div>
+
+
+  </div>
+  <%= link_to "#", class: "btn sidebar-menu__button mbs-auto" do %>
+    <div class="flex shrink-0 overflow-hidden rounded-lg">
+      <%= image_tag "cartoon.jpg", class: "colorize-none", size: 32, alt: "CN" %>
+    </div>
+    <div class="flex flex-col text-start leading-tight overflow-hidden">
+      <span class="overflow-ellipsis max-i-full font-semibold">Lázaro Nixon</span>
+      <span class="overflow-ellipsis max-i-full text-xs">lazaronixon@hotmail.com</span>
+    </div>
+    <%= icon "chevrons-up-down", class: "mis-auto", size: 16, aria: { hidden: true } %>
+  <% end %>
+</div>

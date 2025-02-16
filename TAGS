@@ -1,0 +1,150 @@
+
+config/application.rb,146
+module StoreStore9,0
+  class Application < Rails::ApplicationApplication10,0
+  class Application < Rails::ApplicationStore::Application10,0
+
+db/migrate/20250215191944_create_products.rb,95
+class CreateProducts < ActiveRecord::Migration[8.0]CreateProducts1,0
+  def changechange2,0
+
+db/migrate/20250215191947_create_reviews.rb,93
+class CreateReviews < ActiveRecord::Migration[8.0]CreateReviews1,0
+  def changechange2,0
+
+db/migrate/20250215191942_create_categories.rb,99
+class CreateCategories < ActiveRecord::Migration[8.0]CreateCategories1,0
+  def changechange2,0
+
+db/migrate/20250215191943_create_customers.rb,97
+class CreateCustomers < ActiveRecord::Migration[8.0]CreateCustomers1,0
+  def changechange2,0
+
+db/migrate/20250215191946_create_order_items.rb,99
+class CreateOrderItems < ActiveRecord::Migration[8.0]CreateOrderItems1,0
+  def changechange2,0
+
+db/migrate/20250215191945_create_orders.rb,91
+class CreateOrders < ActiveRecord::Migration[8.0]CreateOrders1,0
+  def changechange2,0
+
+db/seeds.rb,288
+NUM_CATEGORIES    = 22NUM_CATEGORIES15,0
+NUM_CUSTOMERS     = 1200NUM_CUSTOMERS16,0
+NUM_PRODUCTS      = 1000NUM_PRODUCTS17,0
+NUM_ORDERS        = 1500NUM_ORDERS18,0
+NUM_ORDER_ITEMS   = 5000NUM_ORDER_ITEMS19,0
+NUM_REVIEWS       = 5000  # total de reviews desejadoNUM_REVIEWS20,0
+
+app/controllers/application_controller.rb,79
+class ApplicationController < ActionController::BaseApplicationController1,0
+
+app/jobs/application_job.rb,58
+class ApplicationJob < ActiveJob::BaseApplicationJob1,0
+
+app/mailers/application_mailer.rb,67
+class ApplicationMailer < ActionMailer::BaseApplicationMailer1,0
+
+app/helpers/application_helper.rb,47
+module ApplicationHelperApplicationHelper1,0
+
+app/models/order_item.rb,414
+class OrderItem < ApplicationRecordOrderItem1,0
+  belongs_to :orderorder2,0
+  belongs_to :orderorder=2,0
+  belongs_to :orderbuild_order2,0
+  belongs_to :ordercreate_order2,0
+  belongs_to :ordercreate_order!2,0
+  belongs_to :productproduct3,0
+  belongs_to :productproduct=3,0
+  belongs_to :productbuild_product3,0
+  belongs_to :productcreate_product3,0
+  belongs_to :productcreate_product!3,0
+
+app/models/product.rb,552
+class Product < ApplicationRecordProduct1,0
+  belongs_to :categorycategory2,0
+  belongs_to :categorycategory=2,0
+  belongs_to :categorybuild_category2,0
+  belongs_to :categorycreate_category2,0
+  belongs_to :categorycreate_category!2,0
+  has_many :order_itemsorder_items4,0
+  has_many :order_itemsorder_items=4,0
+  has_many :order_itemsorder_item_ids4,0
+  has_many :order_itemsorder_item_ids=4,0
+  has_many :reviewsreviews5,0
+  has_many :reviewsreviews=5,0
+  has_many :reviewsreview_ids5,0
+  has_many :reviewsreview_ids=5,0
+
+app/models/customer.rb,312
+class Customer < ApplicationRecordCustomer1,0
+  has_many :ordersorders2,0
+  has_many :ordersorders=2,0
+  has_many :ordersorder_ids2,0
+  has_many :ordersorder_ids=2,0
+  has_many :reviewsreviews3,0
+  has_many :reviewsreviews=3,0
+  has_many :reviewsreview_ids3,0
+  has_many :reviewsreview_ids=3,0
+
+app/models/application_record.rb,67
+class ApplicationRecord < ActiveRecord::BaseApplicationRecord1,0
+
+app/models/order.rb,412
+class Order < ApplicationRecordOrder1,0
+  belongs_to :customercustomer2,0
+  belongs_to :customercustomer=2,0
+  belongs_to :customerbuild_customer2,0
+  belongs_to :customercreate_customer2,0
+  belongs_to :customercreate_customer!2,0
+  has_many :order_itemsorder_items3,0
+  has_many :order_itemsorder_items=3,0
+  has_many :order_itemsorder_item_ids3,0
+  has_many :order_itemsorder_item_ids=3,0
+
+app/models/category.rb,192
+class Category < ApplicationRecordCategory1,0
+  has_many :productsproducts2,0
+  has_many :productsproducts=2,0
+  has_many :productsproduct_ids2,0
+  has_many :productsproduct_ids=2,0
+
+app/models/review.rb,438
+class Review < ApplicationRecordReview1,0
+  belongs_to :productproduct2,0
+  belongs_to :productproduct=2,0
+  belongs_to :productbuild_product2,0
+  belongs_to :productcreate_product2,0
+  belongs_to :productcreate_product!2,0
+  belongs_to :customercustomer3,0
+  belongs_to :customercustomer=3,0
+  belongs_to :customerbuild_customer3,0
+  belongs_to :customercreate_customer3,0
+  belongs_to :customercreate_customer!3,0
+
+test/test_helper.rb,114
+module ActiveSupportActiveSupport5,0
+  class TestCaseTestCase6,0
+  class TestCaseActiveSupport::TestCase6,0
+
+test/application_system_test_case.rb,95
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCaseApplicationSystemTestCase3,0
+
+test/models/order_item_test.rb,64
+class OrderItemTest < ActiveSupport::TestCaseOrderItemTest3,0
+
+test/models/category_test.rb,62
+class CategoryTest < ActiveSupport::TestCaseCategoryTest3,0
+
+test/models/review_test.rb,58
+class ReviewTest < ActiveSupport::TestCaseReviewTest3,0
+
+test/models/order_test.rb,56
+class OrderTest < ActiveSupport::TestCaseOrderTest3,0
+
+test/models/customer_test.rb,62
+class CustomerTest < ActiveSupport::TestCaseCustomerTest3,0
+
+test/models/product_test.rb,60
+class ProductTest < ActiveSupport::TestCaseProductTest3,0

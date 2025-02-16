@@ -1,0 +1,57 @@
+<div class="container flex flex-col p-4">
+  <div class="flex flex-col mbe-8">
+    <h2 class="text-2xl font-bold">Categories</h2>
+  </div>
+
+  <%= turbo_frame_tag :categories do %>
+    <%= search_form_for @search, class: "flex items-center gap mbe-4", data: { controller: "form" } do |form| %>
+      <%= form.search_field :name_cont, placeholder: "Filter categories...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
+      <%= link_to "Reset", categories_path, class: "btn btn--borderless show@md" if params.has_key?(:q) %>
+    <% end %>
+
+    <div class="relative i-full overflow-x-auto border rounded-lg mbe-4">
+      <table class="table" data-controller="check-all">
+        <thead>
+          <tr>
+            <th><%= check_box_tag :check_all, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependee" } %></th>
+            <th><%= sort_link(@search, :id, class: "flex items-center") %></th>
+            <th><%= sort_link(@search, :name, class: "flex items-center") %></th>
+            <th style="min-inline-size: 3rem"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @categories.empty? %>
+            <tr><td colspan="6" class="text-center p-8">No Results.</td></tr>
+          <% else %>
+          <% @categories.each do |category| %>
+            <tr>
+              
+              <td><%= check_box_tag "selected_ids[]", category.id, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependant" } %></td>
+              <td class="whitespace-nowrap"><%= category.id %></td>
+              <td class="whitespace-nowrap">
+                <div class="flex items-center gap">
+                  <span class="badge">Badge <%= category.id %></span>
+                  <span class="overflow-ellipsis" style="inline-size: 450px"><%= category.name %></span>
+                </div>
+              </td>
+
+              <td class="whitespace-nowrap">
+                <%= button_tag class: "btn btn--plain p-1" do %>
+                  <%= icon "ellipsis", size: 16, aria: { hidden: true } %>
+                  <span class="sr-only">Open menu</span>
+                <% end %>
+              </td>
+
+            </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= render partial: 'shared/pagination_with_numbers', locals: { pagy: @pagy } %>
+    <hr class="mb-4 border-dark">
+    <%= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
+
+  <% end %>
+</div>
