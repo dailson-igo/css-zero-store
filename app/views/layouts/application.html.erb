@@ -24,28 +24,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div class="sidebar-layout">
+  <body class="sidebar-layout">
+    <header class="justify-between" id="header">
+      <%= render "shared/mobile_menu" %>
+      <%= render "shared/header_menu" %>
+    </header>
 
-      <header class="justify-between" id="header">
-        <%= render "shared/mobile_menu" %>
-        <%= render "shared/header_menu" %>
-      </header>
+    <aside id="sidebar">
+      <%= render "shared/sidebar_menu" %>
+    </aside>
 
-      <aside id="sidebar">
-        <%= render "shared/sidebar_menu" %>
-      </aside>
-
-      <main id="main">
-        <% if notice.present? %>
-          <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
-        <% end %>
-        <div class="">
-          <%= yield %>
-        </div>
-      </main>
-
-    </div>
+    <main id="main">
+      <% if notice.present? %>
+        <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>
 
