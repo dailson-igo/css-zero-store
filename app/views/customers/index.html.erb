@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold">Customers</h2>
   </div>
 
-  <%= turbo_frame_tag :customers do %>
+  <%= turbo_frame_tag :index_items do %>
     <%= search_form_for @search, class: "flex items-center gap mbe-4", data: { controller: "form" } do |form| %>
       <%= form.search_field :first_name_or_last_name_cont, placeholder: "Filter customers by name...", autocomplete: "off", class: "input", style: "max-inline-size: 250px" %>
       <%= link_to "Reset", customers_path, class: "btn btn--borderless show@md" if params.has_key?(:q) %>
@@ -26,59 +26,60 @@
           <% if @customers.empty? %>
             <tr><td colspan="6" class="text-center p-8">No Results.</td></tr>
           <% else %>
-          <% @customers.each do |customer| %>
-            <tr>
-              
-              <td><%= check_box_tag "selected_ids[]", customer.id, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependant" } %></td>
-              <td class="whitespace-nowrap"><%= customer.id %></td>
-              <td class="whitespace-nowrap">
-                <div class="flex items-center gap">
-                  <span class="badge">Badge <%= customer.id %></span>
-                  <span class="overflow-ellipsis" style="inline-size: 450px"><%= customer.full_name %></span>
-                </div>
-              </td>
+            <% @customers.each do |customer| %>
+              <tr>
+                
+                <td><%= check_box_tag "selected_ids[]", customer.id, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependant" } %></td>
+                <td class="whitespace-nowrap"><%= customer.id %></td>
+                <td class="whitespace-nowrap">
+                  <div class="flex items-center gap">
+                    <span class="badge">Badge <%= customer.id %></span>
+                    <span><%= customer.full_name %></span>
+                  </div>
+                </td>
 
-              <td class="whitespace-nowrap">
-                <div class="flex items-center gap">
-                  <span class="overflow-ellipsis" style="inline-size: 450px"><%= customer.email %></span>
-                </div>
-              </td>
+                <td class="whitespace-nowrap">
+                  <div class="flex items-center gap">
+                    <span><%= customer.email %></span>
+                  </div>
+                </td>
 
-              <td class="whitespace-nowrap">
-                <div class="flex items-center gap">
-                  <span class="overflow-ellipsis" style="inline-size: 450px"><%= customer.phone %></span>
-                </div>
-              </td>
+                <td class="whitespace-nowrap">
+                  <div class="flex items-center gap">
+                    <span><%= customer.phone %></span>
+                  </div>
+                </td>
 
-              <td class="whitespace-nowrap">
-                <div class="flex items-center gap">
-                  <span class="overflow-ellipsis" style="inline-size: 450px"><%= customer.country %></span>
-                </div>
-              </td>
+                <td class="whitespace-nowrap">
+                  <div class="flex items-center gap">
+                    <span><%= customer.country %></span>
+                  </div>
+                </td>
 
-              <td class="whitespace-nowrap">
-                <div class="flex items-center gap">
-                  <span class="overflow-ellipsis" style="inline-size: 450px"><%= customer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></span>
-                </div>
-              </td>
+                <td class="whitespace-nowrap">
+                  <div class="flex items-center gap">
+                    <span><%= customer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></span>
+                  </div>
+                </td>
 
-              <td class="whitespace-nowrap">
-                <%= button_tag class: "btn btn--plain p-1" do %>
-                  <%= icon "ellipsis", size: 16, aria: { hidden: true } %>
-                  <span class="sr-only">Open menu</span>
-                <% end %>
-              </td>
+                <td class="whitespace-nowrap">
+                  <%= button_tag class: "btn btn--plain p-1" do %>
+                    <%= icon "ellipsis", size: 16, aria: { hidden: true } %>
+                    <span class="sr-only">Open menu</span>
+                  <% end %>
+                </td>
 
-            </tr>
-          <% end %>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
     </div>
 
-    <%= render partial: 'shared/pagination_with_numbers', locals: { pagy: @pagy } %>
-    <hr class="mb-4 border-dark">
-    <%= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
+    <%# <hr class="mb-4 border-dark"> %>
+    <%#= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
 
   <% end %>
 </div>
+
+    <%= render partial: 'shared/pagination_with_numbers', locals: { pagy: @pagy } %>

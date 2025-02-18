@@ -5,9 +5,9 @@ gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
+gem "sqlite3", ">= 2.5"
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+gem "puma", ">= 6.6"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
@@ -38,7 +38,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.14"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -62,14 +62,14 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "faker", "~> 3.5", group: :development
+gem "faker", "~> 3.5.1", group: :development
 
-gem "css-zero", "~> 1.1"
+gem "css-zero", "~> 1.1.3"
 
 gem "rails_icons", "~> 1.1"
 
 gem "hotwire-spark", "~> 0.1.13", group: :development
 
-gem "pagy", "~> 9.3"
+gem "pagy", "~> 9.3.3"
 
 gem "ransack", "~> 4.3"
