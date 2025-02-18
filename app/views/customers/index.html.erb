@@ -1,5 +1,5 @@
-<div class="container flex flex-col p-4">
-  <div class="flex flex-col mbe-8">
+<div class="flex flex-col p-4">
+  <div class="flex flex-col mbe-4">
     <h2 class="text-2xl font-bold">Customers</h2>
   </div>
 
@@ -75,11 +75,10 @@
         </tbody>
       </table>
     </div>
-
-    <%# <hr class="mb-4 border-dark"> %>
-    <%#= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
+    <%= render partial: 'shared/pagination_with_numbers', locals: { pagy: @pagy } %>
+    <hr class="mb-4 border-dark">
+    <%= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
 
   <% end %>
 </div>
 
-    <%= render partial: 'shared/pagination_with_numbers', locals: { pagy: @pagy } %>

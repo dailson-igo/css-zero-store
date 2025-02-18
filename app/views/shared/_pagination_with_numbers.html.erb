@@ -1,58 +1,55 @@
-<div class="flex items-center">
-  <div class="flex items-center justify-end" style="column-gap: 1rem">
+<% if pagy.pages > 1 %>
+
+  <div class="flex items-center">
     
-    <%= form_with url: request.path, method: :get, local: true, data: { turbo_frame: "index_items" } do |form| %>
-      <div class="field">
-        <%= form.select :limit, options_for_select([10, 50, 100], params[:limit].presence || 10), {}, { class: "btn", onchange: "this.form.submit();" } %>
+    <div class="flex items-center" style="column-gap: 1rem">
+      
+      <%= form_with url: request.path, class: "flex items-center", method: :get, local: true, data: { turbo_frame: "index_items" } do |form| %>
+        <div class="field">
+          <%= form.select :limit, options_for_select([10, 50, 100], params[:limit].presence || 10), {}, { class: "input", style: "--input-inline-size: 60px", onchange: "this.form.submit();" } %>
+        </div>
+      <% end %>
+
+      <nav class="flex items-center shrink-0" aria-label="Pagination">
+        <%= link_to pagy_url_for(pagy, pagy.prev), class: "btn btn--borderless", aria: { label: "Previous", disabled: @pagy.prev.nil? }.compact_blank do %>
+          <%= image_tag "chevron-left.svg", size: 16, aria: { hidden: true } %>
+          <%# <span>Previous</span> %>
+        <% end %>
+
+
+        <% pagy.series.each do |item| %>
+          <% if item.is_a? Integer %>
+            <%= link_to pagy_url_for(pagy, item), class: "btn btn--borderless" do %>
+              <%= item %>
+            <% end %>
+          <% elsif item.is_a? String %>
+            <%= link_to "", class: "btn", aria: { current: "page", disabled: true } do %>
+              <%= item %>
+            <% end %>
+          <% elsif item == :gap %>
+            <%= link_to "", class: "btn btn--borderless", aria: { disabled: true } do %> 
+              <%= icon "ellipsis", size: 16, aria: { hidden: true } %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= link_to pagy_url_for(pagy, pagy.next), class: "btn btn--borderless", aria: { label: "Next", disabled: @pagy.next.nil? }.compact_blank do %>
+          <%# <span>Next</span> %>
+          <%= image_tag "chevron-right.svg", size: 16, aria: { hidden: true } %>
+        <% end %>
+      </nav>
+
+      <div class="text-sm font-medium show@md">
+        <%# Pg x de y. %>
       </div>
-    <% end %>
 
-    <div class="" aria-label="Pages">
-      <% if pagy.prev %>
-        <%= link_to pagy_url_for(pagy, pagy.prev), class: "btn btn--borderless", aria: { label: "Previous" } do %>
-          <%= image_tag "chevron-left.svg", size: 16, aria: { hidden: true } %>
-          <span>Previous</span>
-        <% end %>
-      <% else %>
-        <%= link_to "", class: "btn btn--borderless", aria: { label: "Previous", disabled: true } do %>
-          <%= image_tag "chevron-left.svg", size: 16, aria: { hidden: true } %>
-          <span>Previous</span>
-        <% end %>
-      <% end %>
+    </div>
 
-      <% pagy.series.each do |item| %>
-        <% if item.is_a? Integer %>
-          <%= link_to pagy_url_for(pagy, item), class: "btn btn--borderless" do %>
-            <%= item %>
-          <% end %>
-        <% elsif item.is_a? String %>
-          <%= link_to "", class: "btn", aria: { current: "page" } do %>
-            <%= item %>
-          <% end %>        
-        <% elsif item == :gap %>
-          <%= link_to "", class: "btn btn--borderless", aria: { disabled: true } do %>
-            <span>...</span>        
-          <% end %>
+    <div class="text-sm text-subtle mis-auto show@lg">
+      Total of <%= @pagy.count %> record(s).
+    </div>  
 
-        <% end %>
-      <% end %>
-
-      <% if pagy.next %>
-        <%= link_to pagy_url_for(pagy, pagy.next), class: "btn btn--borderless", aria: { label: "Next" } do %>
-          <span>Next</span>
-          <%= image_tag "chevron-right.svg", size: 16, aria: { hidden: true } %>
-        <% end %>
-      <% else %>
-        <%= link_to "", class: "btn btn--borderless", aria: { label: "Next", disabled: true  } do %>
-          <span>Next</span>
-          <%= image_tag "chevron-right.svg", size: 16, aria: { hidden: true } %>
-        <% end %>
-      <% end %>
-    </div>    
   </div>
 
-  <div class="flex items-center mis-auto justify-end text-sm text-subtle show@md" style="column-gap: 1rem">
-    Total of <%= @pagy.count %> record(s).
-  </div>
-  
-</div>
+
+<% end %>
