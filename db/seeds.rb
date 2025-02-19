@@ -66,6 +66,9 @@ end
 
 puts "Clientes criados: #{customer_records.count}"
 
+# Insere somente até aqui, por enquanto
+exit
+
 # ---------------------------
 # 3) Criação de PRODUCTS
 # ---------------------------

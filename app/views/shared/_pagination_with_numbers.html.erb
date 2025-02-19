@@ -1,7 +1,5 @@
 <% if pagy.pages > 1 %>
-
-  <div class="flex items-center">
-    
+  <div class="flex items-center">    
     <div class="flex items-center" style="column-gap: 1rem">
       
       <%= form_with url: request.path, class: "flex items-center", method: :get, local: true, data: { turbo_frame: "index_items" } do |form| %>
@@ -13,9 +11,8 @@
       <nav class="flex items-center shrink-0" aria-label="Pagination">
         <%= link_to pagy_url_for(pagy, pagy.prev), class: "btn btn--borderless", aria: { label: "Previous", disabled: @pagy.prev.nil? }.compact_blank do %>
           <%= image_tag "chevron-left.svg", size: 16, aria: { hidden: true } %>
-          <%# <span>Previous</span> %>
+          <span class="sr-only">Previous</span>
         <% end %>
-
 
         <% pagy.series.each do |item| %>
           <% if item.is_a? Integer %>
@@ -34,7 +31,7 @@
         <% end %>
 
         <%= link_to pagy_url_for(pagy, pagy.next), class: "btn btn--borderless", aria: { label: "Next", disabled: @pagy.next.nil? }.compact_blank do %>
-          <%# <span>Next</span> %>
+          <span class="sr-only">Next</span>
           <%= image_tag "chevron-right.svg", size: 16, aria: { hidden: true } %>
         <% end %>
       </nav>
@@ -42,7 +39,6 @@
       <div class="text-sm font-medium show@md">
         <%# Pg x de y. %>
       </div>
-
     </div>
 
     <div class="text-sm text-subtle mis-auto show@lg">
@@ -50,6 +46,4 @@
     </div>  
 
   </div>
-
-
 <% end %>

@@ -13,13 +13,12 @@
         <thead>
           <tr>
             <th><%= check_box_tag :check_all, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependee" } %></th>
-            <th><%= sort_link(@search, :id, class: "flex items-center") %></th>
             <th><%= sort_link(@search, :full_name, [ :first_name, :last_name ],  class: "flex items-center") %></th>
             <th><%= sort_link(@search, :email, class: "flex items-center") %></th>
             <th><%= sort_link(@search, :phone, class: "flex items-center") %></th>
             <th><%= sort_link(@search, :country, class: "flex items-center") %></th>
             <th><%= sort_link(@search, :ceated_at, class: "flex items-center") %></th>
-            <th style="min-inline-size: 3rem"></th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -27,10 +26,9 @@
             <tr><td colspan="6" class="text-center p-8">No Results.</td></tr>
           <% else %>
             <% @customers.each do |customer| %>
-              <tr>
-                
+              <tr id="<%= dom_id(customer) %>">
                 <td><%= check_box_tag "selected_ids[]", customer.id, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependant" } %></td>
-                <td class="whitespace-nowrap"><%= customer.id %></td>
+                
                 <td class="whitespace-nowrap">
                   <div class="flex items-center gap">
                     <span class="badge">Badge <%= customer.id %></span>
@@ -62,11 +60,32 @@
                   </div>
                 </td>
 
-                <td class="whitespace-nowrap">
-                  <%= button_tag class: "btn btn--plain p-1" do %>
-                    <%= icon "ellipsis", size: 16, aria: { hidden: true } %>
-                    <span class="sr-only">Open menu</span>
-                  <% end %>
+                <td>
+                  <div class="flex items-center gap-half" id="actions">
+                    <%# Show %>
+                    <%= link_to customer_path(customer), 
+                      title: "Show",
+                      class: "btn command__item",
+                      data: { value: "customer", turbo: false } do %>
+                      <%= icon "eye", size: 14, aria: {hidden: false, label: "Aria2"} %>
+                    <% end %>
+
+                    <%# Edit %>
+                    <%= link_to edit_customer_path(customer),
+                      title: "Edit", 
+                      class: "btn command__item", 
+                      data: { value: "customer", turbo: false } do %>
+                      <%= icon "pencil", size: 14 %>
+                    <% end %>
+
+                    <%# Destroy %>
+                    <%= link_to customer_path(customer), class: "btn command__item",
+                      data: { 
+                        turbo_method: :delete, 
+                        turbo_confirm: "Are you absolutely sure?" } do %>
+                      <%= icon "trash-2", size: 14 %>
+                    <% end %>
+                  </div>
                 </td>
 
               </tr>
@@ -76,8 +95,8 @@
       </table>
     </div>
     <%= render partial: 'shared/pagination_with_numbers', locals: { pagy: @pagy } %>
-    <hr class="mb-4 border-dark">
-    <%= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
+    <%# <hr class="mb-4 border-dark"> %>
+    <%#= render partial: 'shared/pagination_with_arrows', locals: { pagy: @pagy } %>
 
   <% end %>
 </div>
