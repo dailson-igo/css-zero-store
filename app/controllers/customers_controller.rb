@@ -60,7 +60,10 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.remove(@customer)
+        render turbo_stream: [
+          turbo_stream.remove(@customer)
+        # turbo_stream.update("customers_count", Customer.count),
+      ]
       end
       format.html { redirect_to customers_path, notice: "Cliente excluído." }
     end
