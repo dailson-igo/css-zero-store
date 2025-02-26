@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  include SqidsEncodable
+
   has_many :orders
   has_many :reviews
 

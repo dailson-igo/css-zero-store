@@ -26,12 +26,12 @@
             <tr><td colspan="6" class="text-center p-8">No Results.</td></tr>
           <% else %>
             <% @customers.each do |customer| %>
-              <tr id="<%= dom_id(customer) %>">
+              <tr id="<%= custom_dom_id(customer) %>">
                 <td><%= check_box_tag "selected_ids[]", customer.id, class: "checkbox", data: { action: "check-all#check", check_all_target: "dependant" } %></td>
                 
                 <td class="whitespace-nowrap">
                   <div class="flex items-center gap">
-                    <span class="badge">Badge <%= customer.id %></span>
+                    <span class="badge">Badge <%= customer.sqid %></span>
                     <span><%= customer.full_name %></span>
                   </div>
                 </td>

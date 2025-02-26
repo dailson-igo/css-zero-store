@@ -68,8 +68,10 @@ gem "css-zero", "~> 1.1.3"
 
 gem "rails_icons", "~> 1.1"
 
-gem "hotwire-spark", "~> 0.1.13", group: :development
+# gem "hotwire-spark", "~> 0.1.13", group: :development
 
 gem "pagy", "~> 9.3.3"
 
 gem "ransack", "~> 4.3"
+
+gem "sqids", "~> 0.2.1"

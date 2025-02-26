@@ -61,7 +61,8 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.remove(@customer)
+          turbo_stream.remove("#{helpers.custom_dom_id(@customer)}")
+        # <turbo-stream action="remove" target="<%= custom_dom_id(@customer) %>"></turbo-stream>
         # turbo_stream.update("customers_count", Customer.count),
       ]
       end
@@ -72,7 +73,8 @@ class CustomersController < ApplicationController
   private
 
   def set_customer
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id])
+    @customer = Customer.find_by_sqid(params[:id])
   end
 
   def customer_params
