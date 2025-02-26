@@ -64,7 +64,7 @@ end
 
 gem "faker", "~> 3.5.1", group: :development
 
-gem "css-zero", "~> 1.1.3"
+gem "css-zero", "~> 1.1.7"
 
 gem "rails_icons", "~> 1.1"
 
