@@ -70,7 +70,7 @@ gem "rails_icons", "~> 1.1"
 
 # gem "hotwire-spark", "~> 0.1.13", group: :development
 
-gem "pagy", "~> 9.3.3"
+gem "pagy", "~> 9.3.4"
 
 gem "ransack", "~> 4.3"
 
