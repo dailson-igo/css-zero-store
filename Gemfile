@@ -66,7 +66,7 @@ gem "faker", "~> 3.5.1", group: :development
 
 gem "css-zero", "~> 1.1.3"
 
-gem "rails_icons", "~> 1.1"
+gem "rails_icons", "~> 1.3"
 
 # gem "hotwire-spark", "~> 0.1.13", group: :development
 
